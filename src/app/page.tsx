@@ -64,11 +64,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { studyMaterial, practiceQuestions, topicMapping, mockTestQuestions } from '@/lib/nqt-data'
+import { studyMaterial, practiceQuestions, topicMapping, mockTestQuestions, quickRevision } from '@/lib/nqt-data'
 import { pyqQuestions } from '@/lib/pyq-data'
 
 // Types
-type Section = 'home' | 'study' | 'practice' | 'mock' | 'pyq'
+type Section = 'home' | 'study' | 'practice' | 'revision' | 'mock' | 'pyq'
 type Category = 'numerical' | 'reasoning' | 'verbal' | 'coding'
 
 interface UserAnswer {
@@ -115,7 +115,8 @@ export default function TCSNQTPrep() {
                 { id: 'home', label: 'Home', icon: Home },
                 { id: 'study', label: 'Study Material', icon: BookOpen },
                 { id: 'practice', label: 'Practice', icon: Target },
-                { id: 'pyq', label: 'PYQ 2025', icon: FileText },
+                { id: 'revision', label: 'Quick Revision', icon: Zap },
+                { id: 'pyq', label: 'PYQ', icon: FileText },
                 { id: 'mock', label: 'Mock Test', icon: Timer }
               ].map((item) => (
                 <Button
@@ -152,7 +153,8 @@ export default function TCSNQTPrep() {
                   { id: 'home', label: 'Home', icon: Home },
                   { id: 'study', label: 'Study Material', icon: BookOpen },
                   { id: 'practice', label: 'Practice', icon: Target },
-                  { id: 'pyq', label: 'PYQ 2025', icon: FileText },
+                  { id: 'revision', label: 'Quick Revision', icon: Zap },
+                  { id: 'pyq', label: 'PYQ', icon: FileText },
                   { id: 'mock', label: 'Mock Test', icon: Timer }
                 ].map((item) => (
                   <Button
@@ -180,6 +182,7 @@ export default function TCSNQTPrep() {
           {currentSection === 'home' && <HomeSection key="home" onNavigate={setCurrentSection} />}
           {currentSection === 'study' && <StudySection key="study" />}
           {currentSection === 'practice' && <PracticeSection key="practice" />}
+          {currentSection === 'revision' && <QuickRevisionSection key="revision" />}
           {currentSection === 'pyq' && <PYQSection key="pyq" />}
           {currentSection === 'mock' && <MockTestSection key="mock" />}
         </AnimatePresence>
@@ -224,8 +227,15 @@ function HomeSection({ onNavigate }: { onNavigate: (section: Section) => void })
       action: () => onNavigate('practice')
     },
     {
+      icon: Zap,
+      title: 'Quick Revision',
+      description: 'All formulas & key points for last-minute revision',
+      color: 'from-amber-500 to-yellow-500',
+      action: () => onNavigate('revision')
+    },
+    {
       icon: FileText,
-      title: 'PYQ 2025',
+      title: 'PYQ 2024-25',
       description: 'Previous year questions with detailed solutions',
       color: 'from-rose-500 to-pink-500',
       action: () => onNavigate('pyq')
@@ -234,7 +244,7 @@ function HomeSection({ onNavigate }: { onNavigate: (section: Section) => void })
       icon: Timer,
       title: 'Mock Tests',
       description: 'Full-length tests simulating real exam conditions',
-      color: 'from-amber-500 to-orange-500',
+      color: 'from-sky-500 to-blue-500',
       action: () => onNavigate('mock')
     }
   ]
@@ -242,8 +252,8 @@ function HomeSection({ onNavigate }: { onNavigate: (section: Section) => void })
   const stats = [
     { label: 'Study Topics', value: '35+', icon: BookOpen },
     { label: 'Practice Questions', value: '150+', icon: Target },
-    { label: 'PYQ Questions', value: '75+', icon: FileText },
-    { label: 'Mock Questions', value: '65', icon: Timer }
+    { label: 'Revision Notes', value: '30+', icon: Zap },
+    { label: 'PYQ Questions', value: '78', icon: FileText }
   ]
 
   return (
@@ -1185,6 +1195,134 @@ function MockTestSection() {
           </CardContent>
         </Card>
       </div>
+    </motion.div>
+  )
+}
+
+// Quick Revision Section Component
+function QuickRevisionSection() {
+  const [activeCategory, setActiveCategory] = useState<Category>('numerical')
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="space-y-6"
+    >
+      {/* Header */}
+      <div className="text-center mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-sm font-medium mb-4">
+          <Zap className="w-4 h-4" />
+          Last Minute Revision
+        </div>
+        <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Quick Revision</h2>
+        <p className="text-slate-500 mt-2 max-w-2xl mx-auto">All essential formulas, tricks, and key points for quick revision before your exam</p>
+      </div>
+
+      {/* Category Tabs */}
+      <Tabs value={activeCategory} onValueChange={(v) => setActiveCategory(v as Category)}>
+        <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full md:w-auto">
+          {(Object.keys(categoryConfig) as Category[]).map((key) => {
+            const config = categoryConfig[key]
+            const Icon = config.icon
+            return (
+              <TabsTrigger key={key} value={key} className="gap-2">
+                <Icon className="w-4 h-4 hidden sm:inline" />
+                {config.label.split(' ')[0]}
+              </TabsTrigger>
+            )
+          })}
+        </TabsList>
+
+        {(Object.keys(categoryConfig) as Category[]).map((category) => (
+          <TabsContent key={category} value={category} className="mt-6">
+            <ScrollArea className="h-[calc(100vh-300px)]">
+              <div className="grid gap-4 pr-4">
+                {quickRevision[category]?.map((topic, index) => (
+                  <Card key={index} className="overflow-hidden">
+                    <CardHeader className="pb-3 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900">
+                      <div className="flex items-center gap-3">
+                        <span className={`w-10 h-10 rounded-lg ${categoryConfig[category].bg} flex items-center justify-center text-lg font-bold ${categoryConfig[category].color}`}>
+                          {topic.icon}
+                        </span>
+                        <CardTitle className="text-lg">{topic.title}</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-4 space-y-4">
+                      {/* Formulas */}
+                      <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800">
+                        <h4 className="font-semibold text-blue-700 dark:text-blue-400 mb-3 flex items-center gap-2">
+                          <BookOpen className="w-4 h-4" />
+                          📐 Formulas
+                        </h4>
+                        <ul className="space-y-2">
+                          {topic.formulas.map((formula, fIndex) => (
+                            <li key={fIndex} className="flex items-start gap-2 text-sm">
+                              <span className="text-blue-500 mt-1">•</span>
+                              <code className="bg-blue-100 dark:bg-blue-900/50 px-2 py-0.5 rounded text-blue-800 dark:text-blue-200 font-mono">{formula}</code>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      {/* Tricks */}
+                      <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800">
+                        <h4 className="font-semibold text-amber-700 dark:text-amber-400 mb-3 flex items-center gap-2">
+                          <Lightbulb className="w-4 h-4" />
+                          💡 Quick Tricks
+                        </h4>
+                        <ul className="space-y-2">
+                          {topic.tricks.map((trick, tIndex) => (
+                            <li key={tIndex} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
+                              <span className="text-amber-500 mt-0.5">⚡</span>
+                              {trick}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      {/* Key Points */}
+                      <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800">
+                        <h4 className="font-semibold text-emerald-700 dark:text-emerald-400 mb-3 flex items-center gap-2">
+                          <Target className="w-4 h-4" />
+                          🎯 Key Points to Remember
+                        </h4>
+                        <ul className="space-y-2">
+                          {topic.keyPoints.map((point, pIndex) => (
+                            <li key={pIndex} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
+                              <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </ScrollArea>
+          </TabsContent>
+        ))}
+      </Tabs>
+
+      {/* Quick Download Section */}
+      <Card className="bg-gradient-to-r from-violet-500 to-purple-600 text-white">
+        <CardContent className="pt-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 className="text-xl font-bold mb-1">📚 Want to Study Offline?</h3>
+              <p className="text-violet-100">Take screenshots of these formulas for quick revision anywhere!</p>
+            </div>
+            <div className="flex gap-2">
+              <Button variant="secondary" className="gap-2">
+                <BookOpen className="w-4 h-4" />
+                Save for Later
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </motion.div>
   )
 }

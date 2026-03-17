@@ -1,6 +1,681 @@
 // TCS NQT Prep - Data Store
 
 // ==========================================
+// QUICK REVISION - FORMULAS & KEY POINTS
+// ==========================================
+
+export const quickRevision = {
+  numerical: [
+    {
+      title: "Percentage Formulas",
+      icon: "%",
+      formulas: [
+        "Percentage = (Value / Total) × 100",
+        "X% of Y = (X/100) × Y",
+        "Increase % = (Increase / Original) × 100",
+        "Decrease % = (Decrease / Original) × 100",
+        "If A is x% more than B, then B = A × 100/(100+x)",
+        "If A is x% less than B, then B = A × 100/(100-x)"
+      ],
+      tricks: [
+        "10% of any number = divide by 10",
+        "5% of any number = divide by 20 (or 10% ÷ 2)",
+        "25% = 1/4, 50% = 1/2, 75% = 3/4",
+        "33.33% = 1/3, 66.66% = 2/3",
+        "To find 15%: Find 10% + 5% (half of 10%)"
+      ],
+      keyPoints: [
+        "Percentage increase/decrease is always on ORIGINAL value",
+        "Successive % changes: Final = Original × (1±a/100) × (1±b/100)",
+        "Net effect of +x% and -x% = always a loss of (x²/100)%"
+      ]
+    },
+    {
+      title: "Profit & Loss",
+      icon: "₹",
+      formulas: [
+        "Profit = SP - CP (when SP > CP)",
+        "Loss = CP - SP (when CP > SP)",
+        "Profit% = (Profit/CP) × 100",
+        "Loss% = (Loss/CP) × 100",
+        "SP = CP × (1 + Profit%/100)",
+        "SP = CP × (1 - Loss%/100)",
+        "CP = SP × 100/(100 + Profit%)",
+        "CP = SP × 100/(100 - Loss%)"
+      ],
+      tricks: [
+        "If profit% and loss% are equal on same SP → Always Loss",
+        "Loss% = (Profit% × Loss%) / 100",
+        "Marked Price = CP × (1 + Markup%/100)",
+        "After Discount: SP = MP × (1 - Discount%/100)"
+      ],
+      keyPoints: [
+        "Profit/Loss is always calculated on COST PRICE",
+        "Discount is always on MARKED PRICE",
+        "Dishonest dealer using false weight: Effective Profit% = (Error/(True Value - Error)) × 100"
+      ]
+    },
+    {
+      title: "Simple Interest",
+      icon: "SI",
+      formulas: [
+        "SI = (P × R × T) / 100",
+        "P = Principal (original amount)",
+        "R = Rate (% per year)",
+        "T = Time (in years)",
+        "Amount = P + SI",
+        "Total Amount = P(1 + RT/100)"
+      ],
+      tricks: [
+        "If rate is per annum, time must be in years",
+        "If time in months, convert: months/12",
+        "If rate is monthly, multiply by 12 for annual",
+        "For 2 years at R%: SI = (P × R × 2) / 100"
+      ],
+      keyPoints: [
+        "SI remains constant every year",
+        "If sum doubles in T years at R%: R = 100/T",
+        "If sum becomes n times in T years: R = 100(n-1)/T"
+      ]
+    },
+    {
+      title: "Compound Interest",
+      icon: "CI",
+      formulas: [
+        "Amount = P(1 + R/100)^T",
+        "CI = Amount - P = P[(1 + R/100)^T - 1]",
+        "For half-yearly: Amount = P(1 + R/200)^(2T)",
+        "For quarterly: Amount = P(1 + R/400)^(4T)",
+        "Effective Rate = (1 + R/100)^T - 1"
+      ],
+      tricks: [
+        "CI for 2 years at R%: CI = P[(1 + R/100)² - 1]",
+        "Difference CI - SI for 2 years = P(R/100)²",
+        "Difference CI - SI for 3 years = P(R/100)²(3 + R/100)"
+      ],
+      keyPoints: [
+        "CI > SI for same rate and time (T > 1)",
+        "CI grows exponentially, SI grows linearly",
+        "Effective rate > Nominal rate when compounding"
+      ]
+    },
+    {
+      title: "Ratio & Proportion",
+      icon: "÷",
+      formulas: [
+        "Ratio a:b means a/b",
+        "Proportion: a:b :: c:d means a/b = c/d",
+        "Mean proportion between a and b = √(ab)",
+        "Third proportion to a and b = b²/a",
+        "Fourth proportion to a, b, c = bc/a"
+      ],
+      tricks: [
+        "If a:b = 2:3 and b:c = 4:5, then a:b:c = 8:12:15",
+        "To combine ratios, make middle terms equal",
+        "If a/b = c/d, then (a+b)/(a-b) = (c+d)/(c-d)"
+      ],
+      keyPoints: [
+        "Ratio has no units (they cancel out)",
+        "Duplicate ratio of a:b = a²:b²",
+        "Triplicate ratio of a:b = a³:b³"
+      ]
+    },
+    {
+      title: "Averages",
+      icon: "μ",
+      formulas: [
+        "Average = Sum of all values / Number of values",
+        "Average Speed = Total Distance / Total Time",
+        "For equal distances: Avg Speed = 2ab/(a+b)",
+        "Weighted Average = (w₁x₁ + w₂x₂)/(w₁ + w₂)"
+      ],
+      tricks: [
+        "If average of n numbers is A, sum = n × A",
+        "If each number increases by k, average increases by k",
+        "If each number is multiplied by k, average is multiplied by k"
+      ],
+      keyPoints: [
+        "Average always lies between min and max values",
+        "New average when value added: (old sum + new value) / (n+1)",
+        "Average of first n natural numbers = (n+1)/2"
+      ]
+    },
+    {
+      title: "Time, Speed & Distance",
+      icon: "🚗",
+      formulas: [
+        "Speed = Distance / Time",
+        "Distance = Speed × Time",
+        "Time = Distance / Speed",
+        "1 km/hr = 5/18 m/s",
+        "1 m/s = 18/5 km/hr"
+      ],
+      tricks: [
+        "For km/hr to m/s: multiply by 5/18",
+        "For m/s to km/hr: multiply by 18/5",
+        "If speed ratio a:b, time ratio = b:a (for same distance)"
+      ],
+      keyPoints: [
+        "Relative speed (opposite directions) = sum of speeds",
+        "Relative speed (same direction) = difference of speeds",
+        "Train crossing pole: Time = Length/Speed",
+        "Train crossing platform: Time = (Train + Platform)/Speed"
+      ]
+    },
+    {
+      title: "Time & Work",
+      icon: "⏰",
+      formulas: [
+        "Work = Rate × Time",
+        "If A completes work in n days, Rate = 1/n per day",
+        "Combined Rate = Rate A + Rate B",
+        "Time together = 1 / Combined Rate",
+        "If A is n times faster than B: A:B = n:1 (efficiency)"
+      ],
+      tricks: [
+        "If A and B together do in m days, A alone in n days: B alone = mn/(n-m)",
+        "Total Work = LCM of individual times",
+        "Efficiency method: Total Work in units, find efficiency per day"
+      ],
+      keyPoints: [
+        "More workers = Less time (inverse proportion)",
+        "Men × Days = Constant work",
+        "Pipe filling tank: Work = 1 tank, Rate = 1/time"
+      ]
+    },
+    {
+      title: "Probability",
+      icon: "🎲",
+      formulas: [
+        "P(Event) = Favorable outcomes / Total outcomes",
+        "P(A or B) = P(A) + P(B) - P(A and B)",
+        "P(A and B) = P(A) × P(B) [independent events]",
+        "P(not A) = 1 - P(A)",
+        "Odds in favor a:b → P = a/(a+b)",
+        "Odds against a:b → P = b/(a+b)"
+      ],
+      tricks: [
+        "Coin: P(Head) = P(Tail) = 1/2",
+        "Die: Total outcomes = 6, P(any number) = 1/6",
+        "Two dice: Total = 36, P(sum 7) = 6/36 = 1/6",
+        "Cards: 52 total, 13 each suit, 4 of each rank"
+      ],
+      keyPoints: [
+        "Probability is always between 0 and 1",
+        "Sum of all probabilities = 1",
+        "P(impossible) = 0, P(certain) = 1"
+      ]
+    },
+    {
+      title: "Permutation & Combination",
+      icon: "P&C",
+      formulas: [
+        "n! = n × (n-1) × (n-2) × ... × 2 × 1",
+        "0! = 1, 1! = 1",
+        "nPr = n!/(n-r)!",
+        "nCr = n!/[r!(n-r)!]",
+        "nCr = nC(n-r)",
+        "nC0 + nC1 + ... + nCn = 2ⁿ"
+      ],
+      tricks: [
+        "Permutation = ORDER matters (arrangement)",
+        "Combination = Order doesn't matter (selection)",
+        "nPn = n! (arrange all items)",
+        "nCn = 1 (select all)"
+      ],
+      keyPoints: [
+        "nPr = r! × nCr",
+        "Number of ways to arrange n items = n!",
+        "Arrange n items where r are identical: n!/r!"
+      ]
+    },
+    {
+      title: "Number System Quick Facts",
+      icon: "#",
+      formulas: [
+        "Product of two numbers = HCF × LCM",
+        "HCF of fractions = HCF of numerators / LCM of denominators",
+        "LCM of fractions = LCM of numerators / HCF of denominators",
+        "Divisibility by 3: Sum of digits divisible by 3",
+        "Divisibility by 9: Sum of digits divisible by 9",
+        "Divisibility by 11: (Sum of odd places) - (Sum of even places) = 0 or multiple of 11"
+      ],
+      tricks: [
+        "Unit digit of powers repeat in cycle of 4 for most numbers",
+        "Number of zeros in n! = [n/5] + [n/25] + [n/125] + ...",
+        "Sum of first n natural numbers = n(n+1)/2",
+        "Sum of squares = n(n+1)(2n+1)/6",
+        "Sum of cubes = [n(n+1)/2]²"
+      ],
+      keyPoints: [
+        "Prime numbers: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31...",
+        "2 is the only even prime",
+        "1 is neither prime nor composite",
+        "Co-prime: HCF = 1"
+      ]
+    }
+  ],
+  reasoning: [
+    {
+      title: "Number Series Patterns",
+      icon: "🔢",
+      formulas: [
+        "Arithmetic: a, a+d, a+2d, a+3d... (add same number)",
+        "Geometric: a, ar, ar², ar³... (multiply same number)",
+        "Squares: 1, 4, 9, 16, 25, 36... (n²)",
+        "Cubes: 1, 8, 27, 64, 125... (n³)",
+        "Fibonacci: 1, 1, 2, 3, 5, 8... (sum of previous two)"
+      ],
+      tricks: [
+        "Find differences: If 2, 4, 6, 8... it's arithmetic",
+        "Find ratios: If 2, 4, 8, 16... it's geometric",
+        "Differences of differences: 2, 4, 8, 12 → second diff is 2, 4, 4...",
+        "Alternate series: Check odd and even positions separately"
+      ],
+      keyPoints: [
+        "Always check first: difference between terms",
+        "If difference increases: might be multiplication or squares",
+        "Write position numbers (1st, 2nd, 3rd...) to find pattern"
+      ]
+    },
+    {
+      title: "Coding-Decoding Rules",
+      icon: "🔐",
+      formulas: [
+        "A=1, B=2, C=3... Z=26",
+        "Forward (+n): Each letter moves n positions ahead",
+        "Backward (-n): Each letter moves n positions back",
+        "Opposite: A↔Z, B↔Y, C↔X... (sum = 27)"
+      ],
+      tricks: [
+        "If word reversed, check for mirror/palindrome pattern",
+        "Position + Position pattern: A(1)+Z(26)=27",
+        "Vowel coding: AEIOU might be coded as 12345",
+        "Keyboard patterns: QWERTY row, ASDF row etc."
+      ],
+      keyPoints: [
+        "Alphabet has 26 letters",
+        "Opposite letters sum to 27",
+        "After Z comes A (circular alphabet)"
+      ]
+    },
+    {
+      title: "Direction Sense",
+      icon: "🧭",
+      formulas: [
+        "Right turn = 90° clockwise",
+        "Left turn = 90° anticlockwise",
+        "After two right turns = facing opposite direction",
+        "4 right turns = back to original direction"
+      ],
+      tricks: [
+        "North + Right = East",
+        "North + Left = West",
+        "South + Right = West",
+        "South + Left = East",
+        "Draw the path on paper for complex problems"
+      ],
+      keyPoints: [
+        "N-E-S-W are 90° apart",
+        "NE, SE, SW, NW are 45° from cardinal directions",
+        "Shadow falls opposite to sun direction"
+      ]
+    },
+    {
+      title: "Blood Relations",
+      icon: "👨‍👩‍👧",
+      formulas: [
+        "Father's brother = Uncle",
+        "Mother's brother = Maternal Uncle",
+        "Father's sister = Aunt",
+        "Mother's sister = Maternal Aunt",
+        "Brother's son = Nephew",
+        "Brother's daughter = Niece",
+        "Sister's husband = Brother-in-law"
+      ],
+      tricks: [
+        "Draw family tree: ♂ for male, ♀ for female",
+        "Use arrows: → for married, — for siblings",
+        "Work backwards from the person mentioned",
+        "Only daughter/son of my father = me/my sibling"
+      ],
+      keyPoints: [
+        "Cousins share grandparents",
+        "In-laws come through marriage",
+        "Grand relations have 2 generations gap"
+      ]
+    },
+    {
+      title: "Seating Arrangement",
+      icon: "🪑",
+      formulas: [
+        "Linear n people: n! arrangements",
+        "Circular n people: (n-1)! arrangements",
+        "Facing center: clockwise is right side",
+        "Facing outside: clockwise is left side"
+      ],
+      tricks: [
+        "Opposite in circle of n = position + n/2",
+        "For 6 people: position 1 opposite position 4",
+        "For 8 people: position 1 opposite position 5",
+        "Mark positions as numbers, fill step by step"
+      ],
+      keyPoints: [
+        "Read all clues before starting",
+        "Start with most definite information",
+        "Use process of elimination"
+      ]
+    },
+    {
+      title: "Syllogism Quick Rules",
+      icon: "📝",
+      formulas: [
+        "All A are B → Some A are B, Some B are A",
+        "Some A are B → Some B are A",
+        "No A is B → No B is A",
+        "All + Some = No conclusion",
+        "All + All = All",
+        "All + No = No"
+      ],
+      tricks: [
+        "Draw Venn diagrams for clarity",
+        "Some + Some = No definite conclusion",
+        "No + Some = Some not",
+        "Possibility: 'Can be' vs 'Must be'"
+      ],
+      keyPoints: [
+        "Conclusion must follow from statements only",
+        "Don't use outside knowledge",
+        "'At least' = 'Some'",
+        "Only A is B = All B are A"
+      ]
+    }
+  ],
+  verbal: [
+    {
+      title: "Grammar - Tenses",
+      icon: "⏱️",
+      formulas: [
+        "Present Simple: V1 (plays, eats)",
+        "Present Continuous: is/am/are + V-ing",
+        "Present Perfect: has/have + V3",
+        "Past Simple: V2 (played, ate)",
+        "Past Continuous: was/were + V-ing",
+        "Past Perfect: had + V3",
+        "Future Simple: will + V1",
+        "Future Perfect: will have + V3"
+      ],
+      tricks: [
+        "Since + point in time → Perfect tense",
+        "For + duration → Perfect tense",
+        "Yesterday/last week → Past tense",
+        "Tomorrow/next week → Future tense",
+        "Always/often/regularly → Simple present"
+      ],
+      keyPoints: [
+        "V1 = base form, V2 = past, V3 = past participle",
+        "Since = from a point, For = duration",
+        "Yet, already, just → Present perfect signals"
+      ]
+    },
+    {
+      title: "Subject-Verb Agreement",
+      icon: "✍️",
+      formulas: [
+        "Singular subject + singular verb (is, has, was)",
+        "Plural subject + plural verb (are, have, were)",
+        "Either/Neither/Each/Everyone = singular",
+        "Collective nouns (team, group) = usually singular",
+        "With 'neither...nor' / 'either...or': verb agrees with nearer subject"
+      ],
+      tricks: [
+        "Everyone, somebody, nobody, anyone = singular",
+        "Mathematics, Physics, Economics = singular (subject names)",
+        "The team is (as unit), The team are (as individuals)",
+        "A number of = plural, The number of = singular"
+      ],
+      keyPoints: [
+        "Subject and verb must agree in number",
+        "Don't get confused by phrases in between",
+        "News, politics, statistics = singular"
+      ]
+    },
+    {
+      title: "Articles Rules",
+      icon: "📄",
+      formulas: [
+        "A = before consonant sound (a book, a university)",
+        "An = before vowel sound (an apple, an hour)",
+        "The = specific/unique (the Sun, the Moon)",
+        "No article = general plural/uncountable"
+      ],
+      tricks: [
+        "University starts with 'yoo' sound → use 'a'",
+        "Hour starts with silent 'h' → use 'an'",
+        "Honest, honor, heir → use 'an' (silent h)",
+        "Unique things always take 'the'"
+      ],
+      keyPoints: [
+        "Sound matters, not spelling",
+        "First mention = a/an, second mention = the",
+        "Superlatives always use 'the'"
+      ]
+    },
+    {
+      title: "Prepositions Quick Guide",
+      icon: "📍",
+      formulas: [
+        "IN = big areas (in India, in May, in the morning)",
+        "ON = surfaces/days (on the table, on Monday)",
+        "AT = specific places/times (at the door, at 5pm)",
+        "BY = before (by 5pm = before/till 5pm)",
+        "SINCE = starting point (since 2010)",
+        "FOR = duration (for 5 years)"
+      ],
+      tricks: [
+        "Arrive in + city/country, Arrive at + place",
+        "Agree with + person, Agree to + proposal",
+        "Good at + activity, Good for + benefit",
+        "Different from (not different than)"
+      ],
+      keyPoints: [
+        "Time: in + month/year, on + day/date, at + time",
+        "Place: in + big area, on + surface, at + point",
+        "Some verbs have fixed prepositions"
+      ]
+    },
+    {
+      title: "Common Idioms",
+      icon: "💬",
+      formulas: [
+        "Apple of one's eye = someone very dear",
+        "At the eleventh hour = at the last moment",
+        "Beat around the bush = avoid main topic",
+        "Blessing in disguise = apparent misfortune that brings benefit",
+        "Burn the midnight oil = work late into night",
+        "Call it a day = stop working",
+        "Cost an arm and a leg = very expensive",
+        "Cut corners = do something poorly to save time/money",
+        "Get out of hand = become uncontrollable",
+        "Hit the nail on the head = be exactly right"
+      ],
+      tricks: [
+        "Don't interpret literally - idioms have figurative meaning",
+        "Practice common idioms regularly",
+        "Read the context for meaning clues"
+      ],
+      keyPoints: [
+        "Idioms are fixed expressions",
+        "Cannot change words in idioms",
+        "Similar idioms exist across languages"
+      ]
+    },
+    {
+      title: "Commonly Confused Words",
+      icon: "🔤",
+      formulas: [
+        "Accept = to receive, Except = excluding",
+        "Advice (n) = suggestion, Advise (v) = to suggest",
+        "Affect (v) = influence, Effect (n) = result",
+        "Complement = completes, Compliment = praise",
+        "Stationary = not moving, Stationery = writing materials",
+        "Principal = head/main, Principle = rule/belief",
+        "Their = belonging to them, There = place, They're = they are",
+        "Your = belonging to you, You're = you are"
+      ],
+      tricks: [
+        "Stationary has 'ar' like 'car' (not moving)",
+        "Stationery has 'er' like 'paper'",
+        "Principal = your PAL (head of school)",
+        "Effect is usually a noun, Affect is usually a verb"
+      ],
+      keyPoints: [
+        "Check part of speech (noun vs verb)",
+        "Look at spelling differences carefully",
+        "Context helps determine correct word"
+      ]
+    }
+  ],
+  coding: [
+    {
+      title: "C++ Input/Output",
+      icon: "💻",
+      formulas: [
+        "cin >> variable; // Input",
+        "cout << variable; // Output",
+        "#include <iostream>",
+        "using namespace std;",
+        "getline(cin, s); // Read entire line with spaces"
+      ],
+      tricks: [
+        ">> with cin (arrow pointing in)",
+        "<< with cout (arrow pointing out)",
+        "endl vs '\\n' - both for new line",
+        "cin.ignore() to clear input buffer"
+      ],
+      keyPoints: [
+        "cin stops at space - use getline for sentences",
+        "cout can chain: cout << a << b << c;",
+        "return 0; at end of main"
+      ]
+    },
+    {
+      title: "Data Types",
+      icon: "📊",
+      formulas: [
+        "int: whole numbers (-2B to +2B)",
+        "long long: larger integers",
+        "float: decimal (6-7 digits)",
+        "double: decimal (15-16 digits)",
+        "char: single character ('A')",
+        "string: text (\"Hello\")",
+        "bool: true/false"
+      ],
+      tricks: [
+        "Use long long for large results",
+        "double for precise decimals",
+        "string in double quotes, char in single quotes",
+        "int/int = int (truncates decimal)"
+      ],
+      keyPoints: [
+        "Choose appropriate type for data",
+        "Overflow: use bigger type",
+        "Integer division truncates decimal"
+      ]
+    },
+    {
+      title: "Loops Quick Reference",
+      icon: "🔄",
+      formulas: [
+        "for(init; condition; update) { }",
+        "while(condition) { }",
+        "do { } while(condition);",
+        "break; // exit loop",
+        "continue; // skip to next iteration"
+      ],
+      tricks: [
+        "for when you know iterations",
+        "while when condition-based",
+        "for(int i=0; i<n; i++) // 0 to n-1",
+        "for(int i=1; i<=n; i++) // 1 to n"
+      ],
+      keyPoints: [
+        "Infinite loop: while(true) or for(;;)",
+        "Nested loops for 2D patterns",
+        "i++ same as i = i + 1"
+      ]
+    },
+    {
+      title: "Arrays Quick Reference",
+      icon: "📋",
+      formulas: [
+        "int arr[n]; // Declaration",
+        "arr[0] = 10; // First element",
+        "arr[n-1] = 20; // Last element",
+        "Loop: for(int i=0; i<n; i++)"
+      ],
+      tricks: [
+        "Index starts from 0, ends at n-1",
+        "Size must be known at compile time (or use vector)",
+        "Access: arr[index]",
+        "Initialize: int arr[5] = {1,2,3,4,5};"
+      ],
+      keyPoints: [
+        "Arrays store same type elements",
+        "Contiguous memory allocation",
+        "No bounds checking in C++"
+      ]
+    },
+    {
+      title: "String Operations",
+      icon: "📝",
+      formulas: [
+        "string s = \"Hello\";",
+        "s.length() or s.size() // length",
+        "s[0] // first character",
+        "s + s2 // concatenate",
+        "s.substr(pos, len) // substring",
+        "getline(cin, s) // read with spaces"
+      ],
+      tricks: [
+        "s[s.length()-1] // last character",
+        "Reverse: for(int i=len-1; i>=0; i--)",
+        "Compare: s1 == s2 or s1.compare(s2)",
+        "Check if letter: isalpha(s[i])"
+      ],
+      keyPoints: [
+        "Include <string> header",
+        "Strings are mutable in C++",
+        "Characters indexed from 0"
+      ]
+    },
+    {
+      title: "Common Patterns",
+      icon: "⚙️",
+      formulas: [
+        "Sum 1 to N: N*(N+1)/2",
+        "Factorial: for loop multiply",
+        "Reverse: while(n>0) { digit=n%10; rev=rev*10+digit; n/=10; }",
+        "Palindrome: Compare original with reversed",
+        "Prime: Check divisibility from 2 to n-1",
+        "GCD: while(b) { a%=b; swap(a,b); }"
+      ],
+      tricks: [
+        "Last digit: n % 10",
+        "Remove last digit: n / 10",
+        "Build number: ans = ans * 10 + digit",
+        "Swap: a=a+b; b=a-b; a=a-b;"
+      ],
+      keyPoints: [
+        "Modulus gives remainder",
+        "Integer division truncates",
+        "Boolean for flags (isPrime, found)"
+      ]
+    }
+  ]
+};
+
+// ==========================================
 // STUDY MATERIAL DATA
 // ==========================================
 
