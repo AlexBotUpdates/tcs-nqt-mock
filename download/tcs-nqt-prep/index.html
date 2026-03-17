@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCS NQT Prep - Full Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>TCS NQT Prep - Full Guide</h1>
+        <p class="tagline">Your Complete Preparation Companion</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <button class="nav-btn active" data-section="study-material">📚 Study Material</button>
+        <button class="nav-btn" data-section="practice">📝 Practice by Topic</button>
+        <button class="nav-btn" data-section="mock-test">⏱️ Full Mock Test</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Study Material Section -->
+        <section id="study-material" class="section active">
+            <h2>Study Material</h2>
+            <p class="intro">Click on any topic to learn the basics in simple language!</p>
+            
+            <div class="category-tabs">
+                <button class="category-btn active" data-category="numerical">🔢 Numerical Ability</button>
+                <button class="category-btn" data-category="reasoning">🧠 Reasoning Ability</button>
+                <button class="category-btn" data-category="verbal">📖 Verbal Ability</button>
+                <button class="category-btn" data-category="coding">💻 Coding in C++</button>
+            </div>
+
+            <div id="study-topics" class="topics-container">
+                <!-- Topics will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Practice Section -->
+        <section id="practice" class="section">
+            <h2>Practice by Topic</h2>
+            <p class="intro">Choose a category and topic to practice questions!</p>
+            
+            <div class="practice-controls">
+                <div class="control-group">
+                    <label for="practice-category">Select Category:</label>
+                    <select id="practice-category">
+                        <option value="">-- Choose Category --</option>
+                        <option value="numerical">Numerical Ability</option>
+                        <option value="reasoning">Reasoning Ability</option>
+                        <option value="verbal">Verbal Ability</option>
+                        <option value="coding">Coding in C++</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="practice-topic">Select Topic:</label>
+                    <select id="practice-topic" disabled>
+                        <option value="">-- Choose Topic --</option>
+                    </select>
+                </div>
+                
+                <button id="start-practice" class="primary-btn" disabled>Start Practice</button>
+            </div>
+
+            <div id="practice-questions" class="questions-container">
+                <!-- Questions will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Mock Test Section -->
+        <section id="mock-test" class="section">
+            <h2>Full Mock Test</h2>
+            
+            <div id="mock-intro" class="mock-intro">
+                <div class="test-info">
+                    <h3>Test Structure</h3>
+                    <ul>
+                        <li><strong>Cognitive Section:</strong> 65 Questions in 75 Minutes</li>
+                        <li><strong>Numerical Ability:</strong> ~20 Questions</li>
+                        <li><strong>Reasoning Ability:</strong> ~20 Questions</li>
+                        <li><strong>Verbal Ability:</strong> ~25 Questions</li>
+                    </ul>
+                    <div class="warning-box">
+                        <p>⚠️ Once you start the test, you cannot navigate to other sections until you submit or time runs out.</p>
+                    </div>
+                </div>
+                <button id="start-mock" class="start-test-btn">🚀 Start Mock Test</button>
+            </div>
+
+            <div id="mock-active" class="mock-active hidden">
+                <div class="test-header">
+                    <div class="timer-display">
+                        <span>⏱️ Time Remaining:</span>
+                        <span id="timer">75:00</span>
+                    </div>
+                    <div class="progress-info">
+                        <span>Question:</span>
+                        <span id="current-q">1</span>/<span id="total-q">65</span>
+                    </div>
+                </div>
+
+                <div class="test-layout">
+                    <div class="question-panel">
+                        <div class="question-header">
+                            <span id="q-category" class="q-category">Category</span>
+                            <span id="q-number" class="q-number">Q1</span>
+                        </div>
+                        <div id="mock-question-content" class="question-content">
+                            <!-- Current question content -->
+                        </div>
+                        <div class="question-nav">
+                            <button id="prev-q" class="nav-btn-secondary">◀ Previous</button>
+                            <button id="mark-review" class="review-btn">📌 Mark for Review</button>
+                            <button id="next-q" class="nav-btn-secondary">Next ▶</button>
+                        </div>
+                    </div>
+
+                    <div class="question-grid-panel">
+                        <h4>Question Navigator</h4>
+                        <div id="question-grid" class="question-grid">
+                            <!-- Grid will be populated by JavaScript -->
+                        </div>
+                        <button id="submit-test" class="submit-btn">✅ Submit Test</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mock-results" class="mock-results hidden">
+                <!-- Results will be shown here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>TCS NQT Prep App | Made with ❤️ for Students</p>
+        <p>All questions are for practice purposes</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
