@@ -240,9 +240,9 @@ function HomeSection({ onNavigate }: { onNavigate: (section: Section) => void })
   ]
 
   const stats = [
-    { label: 'Study Topics', value: '30+', icon: BookOpen },
-    { label: 'Practice Questions', value: '100+', icon: Target },
-    { label: 'PYQ Questions', value: '40+', icon: FileText },
+    { label: 'Study Topics', value: '35+', icon: BookOpen },
+    { label: 'Practice Questions', value: '150+', icon: Target },
+    { label: 'PYQ Questions', value: '75+', icon: FileText },
     { label: 'Mock Questions', value: '65', icon: Timer }
   ]
 
@@ -1237,7 +1237,7 @@ function PYQSection() {
             <FileText className="w-8 h-8 text-violet-500" />
             Previous Year Questions (PYQ)
           </h2>
-          <p className="text-slate-500 mt-1">TCS NQT 2025 Actual Questions with Detailed Solutions</p>
+          <p className="text-slate-500 mt-1">TCS NQT Previous Year Questions with Detailed Solutions</p>
         </div>
         
         <div className="flex gap-2 flex-wrap">
@@ -1247,6 +1247,7 @@ function PYQSection() {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="2025">2025</SelectItem>
+              <SelectItem value="2024">2024</SelectItem>
             </SelectContent>
           </Select>
           

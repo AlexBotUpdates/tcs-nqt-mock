@@ -7,6 +7,89 @@
 export const studyMaterial = {
   numerical: [
     {
+      title: "Number System",
+      icon: "#",
+      explanation: "Number System is the foundation of mathematics. Natural numbers (1, 2, 3...), Whole numbers (0, 1, 2, 3...), Integers (...-2, -1, 0, 1, 2...), Rational numbers (fractions like 3/4), and Real numbers (all numbers on number line). Important concepts: divisibility rules, factors, multiples, prime numbers, and HCF/LCM.",
+      examples: [
+        {
+          title: "Example 1: Find HCF of 24 and 36",
+          steps: [
+            "Step 1: Find factors of 24: 1, 2, 3, 4, 6, 8, 12, 24",
+            "Step 2: Find factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36",
+            "Step 3: Common factors: 1, 2, 3, 4, 6, 12",
+            "Step 4: Highest common factor = 12",
+            "Answer: HCF = 12"
+          ]
+        },
+        {
+          title: "Example 2: Find LCM of 12 and 18",
+          steps: [
+            "Step 1: Multiples of 12: 12, 24, 36, 48, 60...",
+            "Step 2: Multiples of 18: 18, 36, 54, 72...",
+            "Step 3: First common multiple = 36",
+            "Answer: LCM = 36"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Simplification",
+      icon: "≡",
+      explanation: "Simplification uses BODMAS rule: Brackets, Orders (powers), Division, Multiplication, Addition, Subtraction. Always solve brackets first (innermost to outermost), then powers, then ÷ and × (left to right), finally + and - (left to right). Common brackets: () parentheses, {} braces, [] square brackets.",
+      examples: [
+        {
+          title: "Example 1: Simplify 8 + 4 × 2 - 6 ÷ 2",
+          steps: [
+            "Step 1: Division first: 6 ÷ 2 = 3",
+            "Step 2: Then multiplication: 4 × 2 = 8",
+            "Step 3: Expression becomes: 8 + 8 - 3",
+            "Step 4: Addition: 8 + 8 = 16",
+            "Step 5: Subtraction: 16 - 3 = 13",
+            "Answer: 13"
+          ]
+        },
+        {
+          title: "Example 2: Simplify [15 + {3 × (6 - 2)}]",
+          steps: [
+            "Step 1: Innermost bracket (6 - 2) = 4",
+            "Step 2: Next: {3 × 4} = 12",
+            "Step 3: Outermost: [15 + 12] = 27",
+            "Answer: 27"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Problems on Ages",
+      icon: "👤",
+      explanation: "Age problems involve finding ages using relationships given in the problem. Key trick: If A is x years older than B, this difference remains CONSTANT. If A was twice as old as B 5 years ago, use (A-5) = 2(B-5). Always use present age as variable, then express past/future ages by subtracting/adding years.",
+      examples: [
+        {
+          title: "Example 1: A is 5 years older than B. After 5 years, A will be twice as old as B. Find present ages.",
+          steps: [
+            "Step 1: Let B's present age = x, then A = x + 5",
+            "Step 2: After 5 years: B = x + 5, A = x + 10",
+            "Step 3: Given: A = 2B after 5 years",
+            "Step 4: x + 10 = 2(x + 5)",
+            "Step 5: x + 10 = 2x + 10, so x = 0",
+            "Step 6: B = 0, A = 5 (Check: After 5 years, A=10, B=5, A=2B ✓)",
+            "Answer: A is 5 years, B is 0 years (newborn)"
+          ]
+        },
+        {
+          title: "Example 2: Father is 3 times as old as son. After 15 years, he will be twice as old. Find present ages.",
+          steps: [
+            "Step 1: Let son's age = x, father = 3x",
+            "Step 2: After 15 years: son = x + 15, father = 3x + 15",
+            "Step 3: 3x + 15 = 2(x + 15)",
+            "Step 4: 3x + 15 = 2x + 30",
+            "Step 5: x = 15, so son = 15, father = 45",
+            "Answer: Son is 15 years, Father is 45 years"
+          ]
+        }
+      ]
+    },
+    {
       title: "Percentages",
       icon: "%",
       explanation: "Percentage means 'out of 100'. When we say 50%, it means 50 out of 100 parts. Think of a pizza cut into 100 slices - if you eat 25 slices, you ate 25%! To convert a fraction to percentage, multiply by 100. To find percentage of a number, divide by 100 and multiply.",
@@ -694,6 +777,182 @@ int main() {
 
 export const practiceQuestions = {
   numerical: {
+    numberSystem: [
+      {
+        id: 1,
+        question: "Find the HCF of 36 and 48.",
+        type: "text",
+        answer: "12",
+        hint: "Find common factors of both numbers. HCF is the highest common factor.",
+        solution: [
+          "Step 1: Find factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36",
+          "Step 2: Find factors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48",
+          "Step 3: Common factors: 1, 2, 3, 4, 6, 12",
+          "Step 4: Highest common factor = 12",
+          "Answer: HCF = 12"
+        ]
+      },
+      {
+        id: 2,
+        question: "Find the LCM of 15 and 20.",
+        type: "text",
+        answer: "60",
+        hint: "LCM is the smallest number that both numbers divide into evenly.",
+        solution: [
+          "Step 1: Multiples of 15: 15, 30, 45, 60, 75...",
+          "Step 2: Multiples of 20: 20, 40, 60, 80...",
+          "Step 3: First common multiple = 60",
+          "Answer: LCM = 60"
+        ]
+      },
+      {
+        id: 3,
+        question: "How many prime numbers are there between 1 and 20?",
+        type: "text",
+        answer: "8",
+        hint: "Prime numbers are divisible only by 1 and themselves. List them: 2, 3, 5...",
+        solution: [
+          "Step 1: A prime number is divisible only by 1 and itself",
+          "Step 2: Primes between 1 and 20: 2, 3, 5, 7, 11, 13, 17, 19",
+          "Step 3: Count them: 8 primes",
+          "Answer: 8 prime numbers"
+        ]
+      },
+      {
+        id: 4,
+        question: "What is the unit digit of 7⁵⁹?",
+        type: "text",
+        answer: "3",
+        hint: "The unit digits of powers of 7 repeat in a cycle: 7, 9, 3, 1...",
+        solution: [
+          "Step 1: Find the pattern of unit digits for powers of 7",
+          "Step 2: 7¹=7, 7²=49(9), 7³=343(3), 7⁴=2401(1), 7⁵=...7",
+          "Step 3: Cycle repeats every 4: 7, 9, 3, 1",
+          "Step 4: 59 ÷ 4 = 14 remainder 3",
+          "Step 5: Third in cycle is 3",
+          "Answer: Unit digit is 3"
+        ]
+      },
+      {
+        id: 5,
+        question: "If a number is divisible by both 6 and 8, what is the smallest such positive number?",
+        type: "text",
+        answer: "24",
+        hint: "Find the LCM of 6 and 8.",
+        solution: [
+          "Step 1: Smallest number divisible by both = LCM(6, 8)",
+          "Step 2: LCM of 6 and 8 = 24",
+          "Answer: 24"
+        ]
+      }
+    ],
+    simplification: [
+      {
+        id: 1,
+        question: "Simplify: 15 + 6 × 2 - 12 ÷ 4",
+        type: "text",
+        answer: "24",
+        hint: "Use BODMAS: Division, Multiplication, Addition, Subtraction (left to right).",
+        solution: [
+          "Step 1: Division first: 12 ÷ 4 = 3",
+          "Step 2: Then multiplication: 6 × 2 = 12",
+          "Step 3: Now: 15 + 12 - 3",
+          "Step 4: Addition: 15 + 12 = 27",
+          "Step 5: Subtraction: 27 - 3 = 24",
+          "Answer: 24"
+        ]
+      },
+      {
+        id: 2,
+        question: "Simplify: [25 - {5 × (8 - 3)}]",
+        type: "text",
+        answer: "0",
+        hint: "Solve brackets from innermost to outermost.",
+        solution: [
+          "Step 1: Innermost bracket: (8 - 3) = 5",
+          "Step 2: Next: {5 × 5} = 25",
+          "Step 3: Outermost: [25 - 25] = 0",
+          "Answer: 0"
+        ]
+      },
+      {
+        id: 3,
+        question: "Simplify: 100 ÷ 10 ÷ 2 × 5",
+        type: "text",
+        answer: "25",
+        hint: "Division and multiplication have equal priority, solve left to right.",
+        solution: [
+          "Step 1: 100 ÷ 10 = 10",
+          "Step 2: 10 ÷ 2 = 5",
+          "Step 3: 5 × 5 = 25",
+          "Answer: 25"
+        ]
+      },
+      {
+        id: 4,
+        question: "What is 40% of 250 + 30% of 150?",
+        type: "text",
+        answer: "145",
+        hint: "Calculate each percentage separately, then add.",
+        solution: [
+          "Step 1: 40% of 250 = 0.40 × 250 = 100",
+          "Step 2: 30% of 150 = 0.30 × 150 = 45",
+          "Step 3: Sum = 100 + 45 = 145",
+          "Answer: 145"
+        ]
+      }
+    ],
+    ages: [
+      {
+        id: 1,
+        question: "A father is 4 times as old as his son. After 20 years, he will be twice as old. Find present ages.",
+        type: "text",
+        answer: "40, 10",
+        hint: "Let son's age = x, father = 4x. After 20 years: son = x+20, father = 4x+20",
+        solution: [
+          "Step 1: Let son's present age = x, father = 4x",
+          "Step 2: After 20 years: son = x + 20, father = 4x + 20",
+          "Step 3: Given: 4x + 20 = 2(x + 20)",
+          "Step 4: 4x + 20 = 2x + 40",
+          "Step 5: 2x = 20, x = 10",
+          "Step 6: Son = 10 years, Father = 40 years",
+          "Answer: Father 40 years, Son 10 years"
+        ]
+      },
+      {
+        id: 2,
+        question: "The present ages of A and B are in ratio 4:5. After 5 years, their ages will be in ratio 5:6. Find A's present age.",
+        type: "text",
+        answer: "20",
+        hint: "Let present ages be 4x and 5x. After 5 years: (4x+5)/(5x+5) = 5/6",
+        solution: [
+          "Step 1: Let present ages be 4x and 5x",
+          "Step 2: After 5 years: ages = 4x+5 and 5x+5",
+          "Step 3: (4x+5)/(5x+5) = 5/6",
+          "Step 4: 6(4x+5) = 5(5x+5)",
+          "Step 5: 24x + 30 = 25x + 25",
+          "Step 6: x = 5, so A = 4×5 = 20 years",
+          "Answer: A's present age is 20 years"
+        ]
+      },
+      {
+        id: 3,
+        question: "10 years ago, A was half of B's age. If the ratio of their present ages is 3:4, what will be the total of their present ages?",
+        type: "text",
+        answer: "35",
+        hint: "Let present ages be 3x and 4x. Ten years ago: (3x-10) = (1/2)(4x-10)",
+        solution: [
+          "Step 1: Let present ages be 3x and 4x",
+          "Step 2: 10 years ago: A = 3x - 10, B = 4x - 10",
+          "Step 3: Given: 3x - 10 = (1/2)(4x - 10)",
+          "Step 4: 2(3x - 10) = 4x - 10 → 6x - 20 = 4x - 10",
+          "Step 5: 2x = 10, x = 5",
+          "Step 6: Present ages: 15 and 20 years",
+          "Step 7: Verify: 10 years ago: 5 and 10. 5 = ½(10) ✓",
+          "Answer: Total = 15 + 20 = 35 years"
+        ]
+      }
+    ],
     percentages: [
       {
         id: 1,
@@ -1618,6 +1877,9 @@ int main() {
 // Topic mapping for practice section
 export const topicMapping = {
   numerical: [
+    { id: 'numberSystem', name: 'Number System (HCF/LCM)', count: 5 },
+    { id: 'simplification', name: 'Simplification (BODMAS)', count: 4 },
+    { id: 'ages', name: 'Problems on Ages', count: 3 },
     { id: 'percentages', name: 'Percentages', count: 5 },
     { id: 'averages', name: 'Averages', count: 5 },
     { id: 'profitLoss', name: 'Profit & Loss', count: 4 },
