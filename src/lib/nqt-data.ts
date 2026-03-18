@@ -1,6 +1,215 @@
 // TCS NQT Prep - Data Store
 
 // ==========================================
+// QUICK REVISION - FORMULAS & KEY POINTS
+// ==========================================
+
+export const quickRevision = {
+  numerical: [
+    {
+      title: "Percentage Formulas",
+      icon: "%",
+      formulas: [
+        "Percentage = (Value / Total) × 100",
+        "X% of Y = (X/100) × Y",
+        "Increase % = (Increase / Original) × 100",
+        "Decrease % = (Decrease / Original) × 100"
+      ],
+      tricks: [
+        "10% = divide by 10",
+        "25% = 1/4, 50% = 1/2, 75% = 3/4",
+        "To find 15%: Find 10% + 5% (half of 10%)"
+      ],
+      keyPoints: [
+        "Percentage increase/decrease is always on ORIGINAL value",
+        "Net effect of +x% and -x% = always a loss of (x²/100)%"
+      ]
+    },
+    {
+      title: "Profit & Loss",
+      icon: "₹",
+      formulas: [
+        "Profit = SP - CP (when SP > CP)",
+        "Loss = CP - SP (when CP > SP)",
+        "Profit% = (Profit/CP) × 100",
+        "Loss% = (Loss/CP) × 100",
+        "SP = CP × (1 + Profit%/100)"
+      ],
+      tricks: [
+        "If profit% and loss% are equal on same SP → Always Loss",
+        "Discount is always on MARKED PRICE"
+      ],
+      keyPoints: [
+        "Profit/Loss is always calculated on COST PRICE",
+        "Discount is always on MARKED PRICE"
+      ]
+    },
+    {
+      title: "Simple Interest",
+      icon: "SI",
+      formulas: [
+        "SI = (P × R × T) / 100",
+        "P = Principal, R = Rate (% per year), T = Time (years)",
+        "Amount = P + SI"
+      ],
+      tricks: [
+        "If rate is per annum, time must be in years",
+        "If sum doubles in T years at R%: R = 100/T"
+      ],
+      keyPoints: [
+        "SI remains constant every year",
+        "If sum becomes n times in T years: R = 100(n-1)/T"
+      ]
+    },
+    {
+      title: "Compound Interest",
+      icon: "CI",
+      formulas: [
+        "Amount = P(1 + R/100)^T",
+        "CI = Amount - P",
+        "For half-yearly: Amount = P(1 + R/200)^(2T)"
+      ],
+      tricks: [
+        "CI for 2 years at R%: CI = P[(1 + R/100)² - 1]",
+        "Difference CI - SI for 2 years = P(R/100)²"
+      ],
+      keyPoints: [
+        "CI > SI for same rate and time (T > 1)",
+        "CI grows exponentially, SI grows linearly"
+      ]
+    },
+    {
+      title: "Time, Speed & Distance",
+      icon: "🚗",
+      formulas: [
+        "Speed = Distance / Time",
+        "1 km/hr = 5/18 m/s",
+        "1 m/s = 18/5 km/hr"
+      ],
+      tricks: [
+        "For km/hr to m/s: multiply by 5/18",
+        "For m/s to km/hr: multiply by 18/5"
+      ],
+      keyPoints: [
+        "Relative speed (opposite directions) = sum of speeds",
+        "Train crossing platform: Time = (Train + Platform)/Speed"
+      ]
+    }
+  ],
+  reasoning: [
+    {
+      title: "Number Series Patterns",
+      icon: "🔢",
+      formulas: [
+        "Arithmetic: a, a+d, a+2d... (add same number)",
+        "Geometric: a, ar, ar²... (multiply same number)",
+        "Squares: 1, 4, 9, 16, 25... (n²)"
+      ],
+      tricks: [
+        "Find differences: If constant, it's arithmetic",
+        "Alternate series: Check odd and even positions separately"
+      ],
+      keyPoints: [
+        "Always check first: difference between terms",
+        "Write position numbers to find pattern"
+      ]
+    },
+    {
+      title: "Direction Sense",
+      icon: "🧭",
+      formulas: [
+        "Right turn = 90° clockwise",
+        "Left turn = 90° anticlockwise",
+        "After two right turns = facing opposite direction"
+      ],
+      tricks: [
+        "North + Right = East",
+        "North + Left = West",
+        "Draw the path on paper for complex problems"
+      ],
+      keyPoints: [
+        "N-E-S-W are 90° apart",
+        "Shadow falls opposite to sun direction"
+      ]
+    }
+  ],
+  verbal: [
+    {
+      title: "Grammar - Tenses",
+      icon: "⏱️",
+      formulas: [
+        "Present Simple: V1 (plays, eats)",
+        "Past Simple: V2 (played, ate)",
+        "Present Perfect: has/have + V3",
+        "Future Simple: will + V1"
+      ],
+      tricks: [
+        "Since + point in time → Perfect tense",
+        "Yesterday/last week → Past tense"
+      ],
+      keyPoints: [
+        "Since = from a point, For = duration",
+        "Yet, already, just → Present perfect signals"
+      ]
+    },
+    {
+      title: "Subject-Verb Agreement",
+      icon: "✍️",
+      formulas: [
+        "Singular subject + singular verb (is, has)",
+        "Plural subject + plural verb (are, have)",
+        "Either/Neither/Each/Everyone = singular"
+      ],
+      tricks: [
+        "Everyone, somebody, nobody = singular",
+        "Mathematics, Physics = singular (subject names)"
+      ],
+      keyPoints: [
+        "Subject and verb must agree in number",
+        "With 'neither...nor': verb agrees with nearer subject"
+      ]
+    }
+  ],
+  coding: [
+    {
+      title: "C++ Input/Output",
+      icon: "💻",
+      formulas: [
+        "cin >> variable; // Input",
+        "cout << variable; // Output",
+        "getline(cin, s); // Read entire line"
+      ],
+      tricks: [
+        ">> with cin (arrow pointing in)",
+        "<< with cout (arrow pointing out)"
+      ],
+      keyPoints: [
+        "cin stops at space - use getline for sentences",
+        "return 0; at end of main"
+      ]
+    },
+    {
+      title: "Loops Quick Reference",
+      icon: "🔄",
+      formulas: [
+        "for(init; condition; update) { }",
+        "while(condition) { }",
+        "break; // exit loop",
+        "continue; // skip to next iteration"
+      ],
+      tricks: [
+        "for when you know iterations",
+        "while when condition-based"
+      ],
+      keyPoints: [
+        "Infinite loop: while(true) or for(;;)",
+        "i++ same as i = i + 1"
+      ]
+    }
+  ]
+};
+
+// ==========================================
 // STUDY MATERIAL DATA
 // ==========================================
 
